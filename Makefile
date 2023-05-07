@@ -1,4 +1,4 @@
 CC = gcc
 
 all:
-	$(CC) -o sudoku-solver main.c
+	$(CC) -o sudoku-solver.out main.c
