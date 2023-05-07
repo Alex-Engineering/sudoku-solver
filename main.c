@@ -13,7 +13,7 @@ typedef char sudoku_t[9][9];
 	{0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0},
 };*/
-
+/* example sudoku */
 sudoku_t gsudoku = {
 	{0,0,0,0,6,0,0,2,7},
 	{0,0,0,0,0,0,0,0,5},
@@ -29,6 +29,7 @@ sudoku_t gsudoku = {
 
 void sudoku_print(sudoku_t sudoku);
 
+/* tests if a number can be placed without conflict */
 char tester(sudoku_t sudoku, char m, char n, char number) {
 	char i, j;
 	/* rowcheck */
@@ -43,7 +44,7 @@ char tester(sudoku_t sudoku, char m, char n, char number) {
 			return 0;
 		}
 	}
-	/* blockcheck */
+	/* boxcheck */
 	m = (m/3)*3;
 	n = (n/3)*3;
 	for(i=m; i<(m+3); i++) {
@@ -56,6 +57,7 @@ char tester(sudoku_t sudoku, char m, char n, char number) {
 	return 1;
 }
 
+/* recursive backtracking solver */
 void solver(sudoku_t sudoku) {
 	char i, j, k;
 	for(i=0; i<9; i++) {
@@ -81,9 +83,11 @@ void solver(sudoku_t sudoku) {
 int main() {
 	sudoku_print(gsudoku);
 	solver(gsudoku);
+	sudoku_print(gsudoku);
 	return 0;
 }
 
+/* print function */
 void sudoku_print(sudoku_t sudoku) {
 	char i, j;
 	for(i=0; i<9; i++) {
